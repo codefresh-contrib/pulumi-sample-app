@@ -1,0 +1,35 @@
+version: '1.0'
+stages:
+  - prepare
+  - build
+  - deploy
+steps:
+  main_clone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
+    stage: prepare
+    git: github-1
+  BuildProject:
+    title: Build project
+    stage: build
+    image: pulumi/pulumi
+    commands:
+      - yarn install
+  SelectMyCluster:
+    title: Select K8s cluster
+    stage: deploy
+    image: codefresh/kubectl:1.13.3
+    commands: 
+      - kubectl config get-contexts
+      - kubectl config use-context "kostis-demo@FirstKubernetes"
+  RunPulumi:
+    title: Deploying
+    stage: deploy
+    image: pulumi/pulumi
+    commands: 
+      - pulumi stack select dev --non-interactive
+      - pulumi stack --non-interactive
+      - pulumi up --non-interactive
+
