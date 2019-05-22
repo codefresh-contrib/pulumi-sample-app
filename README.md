@@ -10,6 +10,7 @@ More details can be found in [the documentation page](https://codefresh.io/docs/
 1. Create a [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
 1. Create a [free Pulumi account](https://pulumi.io/quickstart/)
 1. Create a [Pulumi access token](https://app.pulumi.com/account/tokens)
+1. Create a [Pulumi stack](https://pulumi.io/reference/stack.html) called `codefresh-example`.
 1. Create a kubernetes cluster on any cloud provider
 1. Connect your [cluster to Codefresh](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 
